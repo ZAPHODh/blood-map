@@ -70,7 +70,7 @@ export default function LancamentosPage() {
         if (searchTerm) {
             filtered = filtered.filter(
                 (reading) =>
-                    reading.notes.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                    (reading.notes?.toLowerCase() || "").includes(searchTerm.toLowerCase()) ||
                     format(parseISO(reading.date), "dd/MM/yyyy HH:mm", { locale: ptBR }).includes(searchTerm),
             )
         }
