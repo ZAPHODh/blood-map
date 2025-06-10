@@ -263,12 +263,14 @@ export function RecordsPage({ readings }: RecordsPageProps) {
                                             <TableCell className="font-mono">
                                                 <div className="flex flex-col">
                                                     <span className="font-semibold">{reading.heartRate} bpm</span>
+                                                    {/* eslint-disable  @typescript-eslint/no-explicit-any */}
                                                     <Badge variant={hrCategory.color as any} className="text-xs mt-1 w-fit">
                                                         {hrCategory.category}
                                                     </Badge>
                                                 </div>
                                             </TableCell>
                                             <TableCell>
+                                                {/* eslint-disable  @typescript-eslint/no-explicit-any */}
                                                 <Badge variant={bpCategory.color as any}>{bpCategory.category}</Badge>
                                             </TableCell>
                                             <TableCell className="text-muted-foreground max-w-xs truncate">{reading.notes || "-"}</TableCell>

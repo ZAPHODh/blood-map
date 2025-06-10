@@ -1,14 +1,6 @@
-
-
-import { ChevronLeft } from "lucide-react";
-
 import React from "react";
-
 import { verifySession } from "@/lib/auth/dal";
 import { redirect } from "next/navigation";
-
-
-
 
 export default async function Page(props: { children: React.ReactNode }) {
     const { session } = await verifySession()
@@ -24,6 +16,5 @@ export default async function Page(props: { children: React.ReactNode }) {
                 </div>
             </div>
         </div>
-
     )
 }

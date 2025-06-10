@@ -3,7 +3,7 @@ import prisma from "@/lib/prisma";
 import { readingSchema } from "@/lib/zod/reading-schema";
 import { NextResponse } from "next/server";
 
-export async function GET(request: Request) {
+export async function GET() {
     const { session } = await verifySession()
     if (!session) {
         return NextResponse.json(null, { status: 401 });

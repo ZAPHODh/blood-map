@@ -256,6 +256,7 @@ export default function DashboardPage() {
                       </TableCell>
                       <TableCell className="font-mono">{reading.heartRate} bpm</TableCell>
                       <TableCell>
+                        {/* eslint-disable  @typescript-eslint/no-explicit-any */}
                         <Badge variant={category.color as any}>{category.category}</Badge>
                       </TableCell>
                       <TableCell className="text-muted-foreground">{reading.notes || "-"}</TableCell>

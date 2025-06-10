@@ -56,7 +56,7 @@ const SessionProvider = ({ children, initialSession }: Props) => {
 
     useEffect(() => {
         checkSession();
-        //@ts-expect-error
+        //@ts-expect-error setInterval retorna NodeJS.Timer em vez de number
         intervalRef.current = setInterval(checkSession, SESSION_CHECK_INTERVAL);
 
         return () => clearInterval(intervalRef.current);

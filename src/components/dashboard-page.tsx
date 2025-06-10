@@ -13,7 +13,6 @@ import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, Responsi
 import { Reading } from "@/generated/prisma"
 
 
-
 interface DashboardPageProps {
     readings: Reading[]
     onNavigateToRecords: () => void
@@ -100,7 +99,7 @@ export function DashboardPage({ readings, onNavigateToRecords }: DashboardPagePr
         }
     }
 
-    const getHeartRateCategory = (heartRate: number, age = 40) => {
+    const getHeartRateCategory = (heartRate: number,) => {
         if (heartRate < 50) {
             return { category: "Bradicardia", color: "destructive", description: "Muito baixo" }
         } else if (heartRate >= 50 && heartRate < 60) {
@@ -342,12 +341,14 @@ export function DashboardPage({ readings, onNavigateToRecords }: DashboardPagePr
                                         <TableCell className="font-mono">
                                             <div className="flex flex-col">
                                                 <span className="font-semibold">{reading.heartRate} bpm</span>
+                                                {/* eslint-disable  @typescript-eslint/no-explicit-any */}
                                                 <Badge variant={hrCategory.color as any} className="text-xs mt-1 w-fit">
                                                     {hrCategory.category}
                                                 </Badge>
                                             </div>
                                         </TableCell>
                                         <TableCell>
+                                            {/* eslint-disable  @typescript-eslint/no-explicit-any */}
                                             <Badge variant={bpCategory.color as any}>{bpCategory.category}</Badge>
                                         </TableCell>
                                         <TableCell className="text-muted-foreground">{reading.notes || "-"}</TableCell>
