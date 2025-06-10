@@ -140,7 +140,9 @@ exports.Prisma.ReadingScalarFieldEnum = {
   systolic: 'systolic',
   diastolic: 'diastolic',
   heartRate: 'heartRate',
-  notes: 'notes'
+  notes: 'notes',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
 };
 
 exports.Prisma.SortOrder = {

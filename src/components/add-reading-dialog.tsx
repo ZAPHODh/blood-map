@@ -14,15 +14,9 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "
 
 import { useData } from "@/hooks/data"
 import { Reading } from "@/generated/prisma"
+import { readingSchema } from "@/lib/zod/reading-schema"
 
-const readingSchema = z.object({
-    date: z.string(),
-    time: z.string(),
-    systolic: z.string().min(1, "Obrigatório"),
-    diastolic: z.string().min(1, "Obrigatório"),
-    heartRate: z.string().min(1, "Obrigatório"),
-    notes: z.string().optional(),
-})
+
 
 type ReadingFormValues = z.infer<typeof readingSchema>
 
@@ -43,7 +37,7 @@ export function AddReadingDialog() {
     })
 
     const onSubmit = (values: ReadingFormValues) => {
-        const reading: Omit<Reading, "id" | "userId"> = {
+        const reading: Omit<Reading, "id" | "userId" | "createdAt" | "updatedAt"> = {
             date: `${values.date}T${values.time}:00`,
             systolic: parseInt(values.systolic),
             diastolic: parseInt(values.diastolic),

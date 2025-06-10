@@ -19,19 +19,21 @@ model User {
   accessToken   String?
   createdAt     DateTime  @default(now()) @map("created_at")
   updatedAt     DateTime  @updatedAt @map("updated_at")
-  readings Reading[]
+  readings      Reading[]
 
   @@index([email], name: "user_email_idx")
   @@map("users")
 }
 
 model Reading {
-  id        String  @id @default(uuid())
-  userId    String  @map("user_id")
-  user      User    @relation(fields: [userId], references: [id])
+  id        String   @id @default(uuid())
+  userId    String   @map("user_id")
+  user      User     @relation(fields: [userId], references: [id])
   date      String
   systolic  Int
   diastolic Int
   heartRate Int
   notes     String?
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
 }

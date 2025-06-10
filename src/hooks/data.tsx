@@ -7,7 +7,7 @@ import { createContext, useContext, useState, type ReactNode } from "react"
 
 interface DataContextType {
     readings: Reading[]
-    addReading: (reading: Omit<Reading, "id" | 'userId'>) => Promise<void>
+    addReading: (reading: Omit<Reading, "id" | "userId" | "createdAt" | "updatedAt">) => Promise<void>
     updateReading: (id: string, reading: Omit<Reading, "id">) => Promise<void>
     deleteReading: (id: string) => Promise<void>
     clearReadings: () => void
@@ -20,7 +20,7 @@ const DataContext = createContext<DataContextType | undefined>(undefined)
 export function DataProvider({ children, initialReadings }: { children: ReactNode, initialReadings: Reading[] }) {
     const [readings, setReadings] = useState<Reading[]>(initialReadings)
 
-    const addReading = async (newReading: Omit<Reading, "id" | "userId">) => {
+    const addReading = async (newReading: Omit<Reading, "id" | "userId" | "createdAt" | "updatedAt">) => {
         const res = await fetch("/api/readings", {
             method: "POST",
             headers: {

@@ -2157,6 +2157,8 @@ export namespace Prisma {
     diastolic: number | null
     heartRate: number | null
     notes: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
   }
 
   export type ReadingMaxAggregateOutputType = {
@@ -2167,6 +2169,8 @@ export namespace Prisma {
     diastolic: number | null
     heartRate: number | null
     notes: string | null
+    createdAt: Date | null
+    updatedAt: Date | null
   }
 
   export type ReadingCountAggregateOutputType = {
@@ -2177,6 +2181,8 @@ export namespace Prisma {
     diastolic: number
     heartRate: number
     notes: number
+    createdAt: number
+    updatedAt: number
     _all: number
   }
 
@@ -2201,6 +2207,8 @@ export namespace Prisma {
     diastolic?: true
     heartRate?: true
     notes?: true
+    createdAt?: true
+    updatedAt?: true
   }
 
   export type ReadingMaxAggregateInputType = {
@@ -2211,6 +2219,8 @@ export namespace Prisma {
     diastolic?: true
     heartRate?: true
     notes?: true
+    createdAt?: true
+    updatedAt?: true
   }
 
   export type ReadingCountAggregateInputType = {
@@ -2221,6 +2231,8 @@ export namespace Prisma {
     diastolic?: true
     heartRate?: true
     notes?: true
+    createdAt?: true
+    updatedAt?: true
     _all?: true
   }
 
@@ -2318,6 +2330,8 @@ export namespace Prisma {
     diastolic: number
     heartRate: number
     notes: string | null
+    createdAt: Date
+    updatedAt: Date
     _count: ReadingCountAggregateOutputType | null
     _avg: ReadingAvgAggregateOutputType | null
     _sum: ReadingSumAggregateOutputType | null
@@ -2347,6 +2361,8 @@ export namespace Prisma {
     diastolic?: boolean
     heartRate?: boolean
     notes?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["reading"]>
 
@@ -2358,6 +2374,8 @@ export namespace Prisma {
     diastolic?: boolean
     heartRate?: boolean
     notes?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["reading"]>
 
@@ -2369,6 +2387,8 @@ export namespace Prisma {
     diastolic?: boolean
     heartRate?: boolean
     notes?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
     user?: boolean | UserDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["reading"]>
 
@@ -2380,9 +2400,11 @@ export namespace Prisma {
     diastolic?: boolean
     heartRate?: boolean
     notes?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
   }
 
-  export type ReadingOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "date" | "systolic" | "diastolic" | "heartRate" | "notes", ExtArgs["result"]["reading"]>
+  export type ReadingOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "userId" | "date" | "systolic" | "diastolic" | "heartRate" | "notes" | "createdAt" | "updatedAt", ExtArgs["result"]["reading"]>
   export type ReadingInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     user?: boolean | UserDefaultArgs<ExtArgs>
   }
@@ -2406,6 +2428,8 @@ export namespace Prisma {
       diastolic: number
       heartRate: number
       notes: string | null
+      createdAt: Date
+      updatedAt: Date
     }, ExtArgs["result"]["reading"]>
     composites: {}
   }
@@ -2837,6 +2861,8 @@ export namespace Prisma {
     readonly diastolic: FieldRef<"Reading", 'Int'>
     readonly heartRate: FieldRef<"Reading", 'Int'>
     readonly notes: FieldRef<"Reading", 'String'>
+    readonly createdAt: FieldRef<"Reading", 'DateTime'>
+    readonly updatedAt: FieldRef<"Reading", 'DateTime'>
   }
     
 
@@ -3288,7 +3314,9 @@ export namespace Prisma {
     systolic: 'systolic',
     diastolic: 'diastolic',
     heartRate: 'heartRate',
-    notes: 'notes'
+    notes: 'notes',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
   };
 
   export type ReadingScalarFieldEnum = (typeof ReadingScalarFieldEnum)[keyof typeof ReadingScalarFieldEnum]
@@ -3473,6 +3501,8 @@ export namespace Prisma {
     diastolic?: IntFilter<"Reading"> | number
     heartRate?: IntFilter<"Reading"> | number
     notes?: StringNullableFilter<"Reading"> | string | null
+    createdAt?: DateTimeFilter<"Reading"> | Date | string
+    updatedAt?: DateTimeFilter<"Reading"> | Date | string
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
   }
 
@@ -3484,6 +3514,8 @@ export namespace Prisma {
     diastolic?: SortOrder
     heartRate?: SortOrder
     notes?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
     user?: UserOrderByWithRelationInput
   }
 
@@ -3498,6 +3530,8 @@ export namespace Prisma {
     diastolic?: IntFilter<"Reading"> | number
     heartRate?: IntFilter<"Reading"> | number
     notes?: StringNullableFilter<"Reading"> | string | null
+    createdAt?: DateTimeFilter<"Reading"> | Date | string
+    updatedAt?: DateTimeFilter<"Reading"> | Date | string
     user?: XOR<UserScalarRelationFilter, UserWhereInput>
   }, "id">
 
@@ -3509,6 +3543,8 @@ export namespace Prisma {
     diastolic?: SortOrder
     heartRate?: SortOrder
     notes?: SortOrderInput | SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
     _count?: ReadingCountOrderByAggregateInput
     _avg?: ReadingAvgOrderByAggregateInput
     _max?: ReadingMaxOrderByAggregateInput
@@ -3527,6 +3563,8 @@ export namespace Prisma {
     diastolic?: IntWithAggregatesFilter<"Reading"> | number
     heartRate?: IntWithAggregatesFilter<"Reading"> | number
     notes?: StringNullableWithAggregatesFilter<"Reading"> | string | null
+    createdAt?: DateTimeWithAggregatesFilter<"Reading"> | Date | string
+    updatedAt?: DateTimeWithAggregatesFilter<"Reading"> | Date | string
   }
 
   export type UserCreateInput = {
@@ -3631,6 +3669,8 @@ export namespace Prisma {
     diastolic: number
     heartRate: number
     notes?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
     user: UserCreateNestedOneWithoutReadingsInput
   }
 
@@ -3642,6 +3682,8 @@ export namespace Prisma {
     diastolic: number
     heartRate: number
     notes?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
   }
 
   export type ReadingUpdateInput = {
@@ -3651,6 +3693,8 @@ export namespace Prisma {
     diastolic?: IntFieldUpdateOperationsInput | number
     heartRate?: IntFieldUpdateOperationsInput | number
     notes?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
     user?: UserUpdateOneRequiredWithoutReadingsNestedInput
   }
 
@@ -3662,6 +3706,8 @@ export namespace Prisma {
     diastolic?: IntFieldUpdateOperationsInput | number
     heartRate?: IntFieldUpdateOperationsInput | number
     notes?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type ReadingCreateManyInput = {
@@ -3672,6 +3718,8 @@ export namespace Prisma {
     diastolic: number
     heartRate: number
     notes?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
   }
 
   export type ReadingUpdateManyMutationInput = {
@@ -3681,6 +3729,8 @@ export namespace Prisma {
     diastolic?: IntFieldUpdateOperationsInput | number
     heartRate?: IntFieldUpdateOperationsInput | number
     notes?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type ReadingUncheckedUpdateManyInput = {
@@ -3691,6 +3741,8 @@ export namespace Prisma {
     diastolic?: IntFieldUpdateOperationsInput | number
     heartRate?: IntFieldUpdateOperationsInput | number
     notes?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type StringFilter<$PrismaModel = never> = {
@@ -3887,6 +3939,8 @@ export namespace Prisma {
     diastolic?: SortOrder
     heartRate?: SortOrder
     notes?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
   }
 
   export type ReadingAvgOrderByAggregateInput = {
@@ -3903,6 +3957,8 @@ export namespace Prisma {
     diastolic?: SortOrder
     heartRate?: SortOrder
     notes?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
   }
 
   export type ReadingMinOrderByAggregateInput = {
@@ -3913,6 +3969,8 @@ export namespace Prisma {
     diastolic?: SortOrder
     heartRate?: SortOrder
     notes?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
   }
 
   export type ReadingSumOrderByAggregateInput = {
@@ -4185,6 +4243,8 @@ export namespace Prisma {
     diastolic: number
     heartRate: number
     notes?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
   }
 
   export type ReadingUncheckedCreateWithoutUserInput = {
@@ -4194,6 +4254,8 @@ export namespace Prisma {
     diastolic: number
     heartRate: number
     notes?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
   }
 
   export type ReadingCreateOrConnectWithoutUserInput = {
@@ -4233,6 +4295,8 @@ export namespace Prisma {
     diastolic?: IntFilter<"Reading"> | number
     heartRate?: IntFilter<"Reading"> | number
     notes?: StringNullableFilter<"Reading"> | string | null
+    createdAt?: DateTimeFilter<"Reading"> | Date | string
+    updatedAt?: DateTimeFilter<"Reading"> | Date | string
   }
 
   export type UserCreateWithoutReadingsInput = {
@@ -4310,6 +4374,8 @@ export namespace Prisma {
     diastolic: number
     heartRate: number
     notes?: string | null
+    createdAt?: Date | string
+    updatedAt?: Date | string
   }
 
   export type ReadingUpdateWithoutUserInput = {
@@ -4319,6 +4385,8 @@ export namespace Prisma {
     diastolic?: IntFieldUpdateOperationsInput | number
     heartRate?: IntFieldUpdateOperationsInput | number
     notes?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type ReadingUncheckedUpdateWithoutUserInput = {
@@ -4328,6 +4396,8 @@ export namespace Prisma {
     diastolic?: IntFieldUpdateOperationsInput | number
     heartRate?: IntFieldUpdateOperationsInput | number
     notes?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type ReadingUncheckedUpdateManyWithoutUserInput = {
@@ -4337,6 +4407,8 @@ export namespace Prisma {
     diastolic?: IntFieldUpdateOperationsInput | number
     heartRate?: IntFieldUpdateOperationsInput | number
     notes?: NullableStringFieldUpdateOperationsInput | string | null
+    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
+    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
 
