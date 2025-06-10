@@ -4,7 +4,7 @@ import { Inter } from "next/font/google"
 import "./globals.css"
 import { Nav } from "@/components/nav"
 import { DataProvider } from "@/hooks/data"
-
+import { Toaster } from "@/components/ui/sonner"
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
@@ -17,6 +17,7 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode
 }) {
+
   return (
     <html lang="pt-BR">
       <body className={inter.className}>
@@ -28,6 +29,7 @@ export default async function RootLayout({
             </main>
           </div>
         </DataProvider>
+        <Toaster />
       </body>
     </html>
   )
