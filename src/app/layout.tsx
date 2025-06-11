@@ -20,6 +20,7 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode
 }) {
+  'use server';
   const { session } = await verifySession()
   const readings = await getReadings()
   return (

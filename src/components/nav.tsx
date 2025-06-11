@@ -61,12 +61,15 @@ export function Nav() {
                         </div>
 
                     </div>
-                    <div className="bg-red h-[100%]">
-                        <Button onClick={() => {
+                    <Button
+                        className="m-4"
+                        size={'sm'}
+                        onClick={() => {
                             console.log('logout')
                             logout()
-                        }}>Sair</Button>
-                    </div>
+                        }}>
+                        Sair
+                    </Button>
                 </div>
                 <div className="sm:hidden" >
                     <div className="pt-2 pb-3 space-y-1" >
