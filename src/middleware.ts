@@ -4,11 +4,10 @@ import { cookies } from 'next/headers'
 import { decode } from './lib/auth/server-session'
 
 
-const protectedRoutes = ['/dashboard', '/']
+const protectedRoutes = ['/entry', '/']
 const publicRoutes = ['/auth']
 
 export default async function middleware(req: NextRequest) {
-
     const path = req.nextUrl.pathname
     const isProtectedRoute = protectedRoutes.includes(path)
     const isPublicRoute = publicRoutes.includes(path)
