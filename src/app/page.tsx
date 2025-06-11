@@ -1,6 +1,6 @@
 "use client"
 
-import { use, useMemo } from "react"
+import { useMemo } from "react"
 import { format, parseISO } from "date-fns"
 import { ptBR } from "date-fns/locale"
 import Link from "next/link"
