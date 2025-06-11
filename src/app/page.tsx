@@ -1,6 +1,6 @@
 "use client"
 
-import { useMemo } from "react"
+import { use, useMemo } from "react"
 import { format, parseISO } from "date-fns"
 import { ptBR } from "date-fns/locale"
 import Link from "next/link"
@@ -14,10 +14,12 @@ import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, Responsi
 import { AddReadingDialog } from "@/components/add-reading-dialog"
 import { PageHeader } from "@/components/page-header"
 import { useData } from "@/hooks/data"
+import { useRouter } from "next/navigation"
 
 export default function DashboardPage() {
   const { readings } = useData()
-
+  const { push } = useRouter()
+  if (readings.length === 0) return push("/entry")
   const recentReadings = useMemo(() => {
     const thirtyDaysAgo = new Date()
     thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - 30)
