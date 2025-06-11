@@ -71,7 +71,7 @@ function SignUp({ className, ...props }: React.ComponentPropsWithoutRef<"div">) 
         toast("Conta criada com sucesso!", {
             description: "Redirecionando para a página inicial.",
         });
-        router.push("/");
+        router.refresh()
     }
 
     return (
