@@ -14,12 +14,10 @@ import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, Responsi
 import { AddReadingDialog } from "@/components/add-reading-dialog"
 import { PageHeader } from "@/components/page-header"
 import { useData } from "@/hooks/data"
-import { useRouter } from "next/navigation"
+
 
 export default function DashboardPage() {
   const { readings } = useData()
-  const { push } = useRouter()
-  if (readings.length === 0) return push("/entry")
   const recentReadings = useMemo(() => {
     const thirtyDaysAgo = new Date()
     thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - 30)
@@ -93,12 +91,17 @@ export default function DashboardPage() {
       return { category: "Crise Hipertensiva", color: "destructive" }
     } else if (systolic >= 140 || diastolic >= 90) {
       return { category: "Hipertensão", color: "destructive" }
-    } else if (systolic >= 130 || diastolic >= 80) {
-      return { category: "Elevada", color: "secondary" }
-    } else {
+    } else if (systolic <= 120 && diastolic <= 80) {
       return { category: "Normal", color: "default" }
+    } else if ((systolic >= 121 && systolic <= 129) && diastolic < 80) {
+      return { category: "Elevada", color: "secondary" }
+    } else if ((systolic >= 130 && systolic <= 139) || (diastolic >= 81 && diastolic <= 89)) {
+      return { category: "Hipertensão Estágio 1", color: "warning" }
+    } else {
+      return { category: "Indefinido", color: "default" }
     }
   }
+
 
   return (
     <div className="space-y-8">
@@ -226,7 +229,7 @@ export default function DashboardPage() {
             <CardTitle>Últimas Medições</CardTitle>
             <CardDescription>5 registros mais recentes</CardDescription>
           </div>
-          <Link href="/lancamentos">
+          <Link href="/entry">
             <Button variant="outline" className="flex items-center gap-2">
               Ver Todos
               <ArrowRight className="w-4 h-4" />

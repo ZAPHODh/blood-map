@@ -72,7 +72,6 @@ export function RecordsPage({ readings }: RecordsPageProps) {
     }, [readings, filterPeriod, systolicMin, systolicMax, diastolicMin, diastolicMax, heartRateMin, heartRateMax])
 
     const getBloodPressureCategory = (systolic: number, diastolic: number) => {
-        console.log(systolic, diastolic)
         if (systolic >= 180 || diastolic >= 110) {
             return { category: "Crise Hipertensiva", color: "destructive" }
         } else if (systolic >= 140 || diastolic >= 90) {
