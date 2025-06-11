@@ -40,6 +40,7 @@ function SignUp({ className, ...props }: React.ComponentPropsWithoutRef<"div">) 
             name: "",
             email: "",
             password: "",
+            cep: "",
         },
     });
 
@@ -101,9 +102,23 @@ function SignUp({ className, ...props }: React.ComponentPropsWithoutRef<"div">) 
                                     <FormItem>
                                         <FormLabel>Email</FormLabel>
                                         <FormControl>
-                                            <Input placeholder="exemplo@dominio.com" {...field} />
+                                            <Input type="email" placeholder="exemplo@dominio.com" {...field} />
                                         </FormControl>
                                         <FormDescription>Você usará este email para fazer login</FormDescription>
+                                        <FormMessage />
+                                    </FormItem>
+                                )}
+                            />
+                            <FormField
+                                control={form.control}
+                                name="cep"
+                                render={({ field }) => (
+                                    <FormItem>
+                                        <FormLabel>CEP</FormLabel>
+                                        <FormControl>
+                                            <Input placeholder="exemplo@dominio.com" {...field} />
+                                        </FormControl>
+                                        <FormDescription>Digite seu cep</FormDescription>
                                         <FormMessage />
                                     </FormItem>
                                 )}

@@ -5,6 +5,7 @@ import "./globals.css"
 import { Nav } from "@/components/nav"
 import { DataProvider } from "@/hooks/data"
 import { Toaster } from "@/components/ui/sonner"
+import { getReadings } from "@/requests/get-readings"
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
@@ -17,11 +18,11 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode
 }) {
-
+  const readings = await getReadings()
   return (
     <html lang="pt-BR">
       <body className={inter.className}>
-        <DataProvider initialReadings={[]}>
+        <DataProvider initialReadings={readings}>
           <div className="min-h-screen bg-gray-50">
             <Nav />
             <main className="py-8">

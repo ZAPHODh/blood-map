@@ -39,6 +39,7 @@ export function AddReadingDialog() {
     const onSubmit = (values: ReadingFormValues) => {
         const reading: Omit<Reading, "id" | "userId" | "createdAt" | "updatedAt"> = {
             date: `${values.date}T${values.time}:00`,
+            time: values.time,
             systolic: parseInt(values.systolic),
             diastolic: parseInt(values.diastolic),
             heartRate: parseInt(values.heartRate),

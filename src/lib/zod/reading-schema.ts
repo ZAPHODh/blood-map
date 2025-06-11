@@ -8,5 +8,13 @@ const readingSchema = z.object({
     heartRate: z.string().min(1, "Obrigatório"),
     notes: z.string().optional(),
 })
-export { readingSchema }
+const realReadingSchema = z.object({
+    date: z.string(),
+    time: z.string(),
+    systolic: z.number().min(1, "Obrigatório"),
+    diastolic: z.number().min(1, "Obrigatório"),
+    heartRate: z.number().min(1, "Obrigatório"),
+    notes: z.string().optional(),
+})
+export { readingSchema, realReadingSchema }
 export type ZodReading = z.infer<typeof readingSchema>;

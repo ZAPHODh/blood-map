@@ -141,6 +141,7 @@ exports.Prisma.ReadingScalarFieldEnum = {
   diastolic: 'diastolic',
   heartRate: 'heartRate',
   notes: 'notes',
+  time: 'time',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 };

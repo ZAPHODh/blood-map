@@ -1,10 +1,11 @@
 import { verifySession } from "@/lib/auth/dal";
 import prisma from "@/lib/prisma";
-import { readingSchema } from "@/lib/zod/reading-schema";
+import { realReadingSchema } from "@/lib/zod/reading-schema";
 import { NextResponse } from "next/server";
 
 export async function GET() {
     const { session } = await verifySession()
+    console.log(session)
     if (!session) {
         return NextResponse.json(null, { status: 401 });
     }
@@ -20,15 +21,17 @@ export async function POST(request: Request) {
         return NextResponse.json(null, { status: 401 });
     }
     const body = await request.json();
-    const parsed = readingSchema.safeParse(body);
+    console.log('body', body)
+    const parsed = realReadingSchema.safeParse(body);
     if (!parsed.success) {
+        console.log(parsed.error)
         return NextResponse.json({
             error: "Dados inválidos",
             details: parsed.error.flatten()
         }, { status: 400 });
     }
     const newReading = await prisma.reading.create({
-        data: { ...parsed.data, userId: session.user.id, diastolic: parseInt(parsed.data.diastolic), systolic: parseInt(parsed.data.systolic), heartRate: parseInt(parsed.data.heartRate) },
+        data: { ...parsed.data, userId: session.user.id },
     })
-    NextResponse.json(newReading, { status: 201 });
+    return NextResponse.json(newReading, { status: 201 });
 }
