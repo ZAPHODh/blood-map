@@ -30,8 +30,10 @@ import Link from "next/link";
 
 import { signupSchema } from "@/lib/zod/signup-schema";
 import { useRouter } from "next/navigation";
+import { useSession } from "./session-provider";
 
 function SignUp({ className, ...props }: React.ComponentPropsWithoutRef<"div">) {
+    const { setSession } = useSession();
     const router = useRouter();
 
     const form = useForm<z.infer<typeof signupSchema>>({
@@ -64,7 +66,11 @@ function SignUp({ className, ...props }: React.ComponentPropsWithoutRef<"div">) 
             });
             return;
         }
-
+        const session = await res.json();
+        setSession(session);
+        toast("Conta criada com sucesso!", {
+            description: "Redirecionando para a página inicial.",
+        });
         router.push("/");
     }
 

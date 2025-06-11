@@ -72,14 +72,19 @@ export function RecordsPage({ readings }: RecordsPageProps) {
     }, [readings, filterPeriod, systolicMin, systolicMax, diastolicMin, diastolicMax, heartRateMin, heartRateMax])
 
     const getBloodPressureCategory = (systolic: number, diastolic: number) => {
+        console.log(systolic, diastolic)
         if (systolic >= 180 || diastolic >= 110) {
             return { category: "Crise Hipertensiva", color: "destructive" }
         } else if (systolic >= 140 || diastolic >= 90) {
             return { category: "Hipertensão", color: "destructive" }
-        } else if (systolic >= 130 || diastolic >= 80) {
-            return { category: "Elevada", color: "secondary" }
-        } else {
+        } else if (systolic <= 120 && diastolic <= 80) {
             return { category: "Normal", color: "default" }
+        } else if ((systolic >= 121 && systolic <= 129) && diastolic < 80) {
+            return { category: "Elevada", color: "secondary" }
+        } else if ((systolic >= 130 && systolic <= 139) || (diastolic >= 81 && diastolic <= 89)) {
+            return { category: "Hipertensão Estágio 1", color: "warning" }
+        } else {
+            return { category: "Indefinido", color: "default" }
         }
     }
 

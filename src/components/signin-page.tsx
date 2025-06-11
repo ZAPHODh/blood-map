@@ -64,7 +64,7 @@ function SignIn({
 
         const session: Session = await res.json();
         setSession(session);
-        router.push("/");
+        router.refresh()
     }
 
     return (

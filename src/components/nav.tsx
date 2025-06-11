@@ -4,6 +4,8 @@ import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { Home, FileText, Activity } from "lucide-react"
 import { cn } from "@/lib/utils"
+import { Button } from "./ui/button"
+import { useSession } from "./session-provider"
 
 const navigation = [
     {
@@ -21,13 +23,14 @@ const navigation = [
 ]
 
 export function Nav() {
+    const { logout } = useSession()
     const pathname = usePathname()
     if (pathname.startsWith("/auth")) return null
     return (
         <nav className="bg-white border-b border-gray-200 shadow-sm" >
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" >
-                <div className="flex justify-between h-16" >
-                    <div className="flex" >
+                <div className="flex justify-between h-16 " >
+                    <div className="flex">
                         < div className="flex-shrink-0 flex items-center" >
                             <Activity className="h-8 w-8 text-blue-600" />
                             <span className="ml-2 text-xl font-bold text-gray-900" > Pressão Arterial </span>
@@ -56,6 +59,13 @@ export function Nav() {
                                 })
                             }
                         </div>
+
+                    </div>
+                    <div className="bg-red h-[100%]">
+                        <Button onClick={() => {
+                            console.log('logout')
+                            logout()
+                        }}>Sair</Button>
                     </div>
                 </div>
                 <div className="sm:hidden" >
@@ -89,6 +99,6 @@ export function Nav() {
                     </div>
                 </div>
             </div>
-        </nav>
+        </nav >
     )
 }

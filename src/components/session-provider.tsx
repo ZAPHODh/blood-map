@@ -31,11 +31,11 @@ const SessionProvider = ({ children, initialSession }: Props) => {
     const { refresh } = useRouter();
 
     const logout = async () => {
+        console.log("Logging out...");
         if (!session) return;
-
+        console.log("Session before logout:", session);
         const res = await fetch("/api/auth/signout", { method: "POST" });
         const result = await res.json();
-        console.log(result)
         if (res.ok && !!result?.success) {
             setSession(undefined);
             refresh();

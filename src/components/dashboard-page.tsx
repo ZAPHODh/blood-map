@@ -92,7 +92,9 @@ export function DashboardPage({ readings, onNavigateToRecords }: DashboardPagePr
             return { category: "Crise Hipertensiva", color: "destructive" }
         } else if (systolic >= 140 || diastolic >= 90) {
             return { category: "Hipertensão", color: "destructive" }
-        } else if (systolic >= 130 || diastolic >= 80) {
+        } else if ((systolic >= 130 && systolic <= 139) || (diastolic >= 80 && diastolic <= 89)) {
+            return { category: "Hipertensão Estágio 1", color: "warning" }
+        } else if (systolic >= 120 && systolic <= 129 && diastolic < 80) {
             return { category: "Elevada", color: "secondary" }
         } else {
             return { category: "Normal", color: "default" }

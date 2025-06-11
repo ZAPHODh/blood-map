@@ -3,14 +3,19 @@ import prisma from "@/lib/prisma";
 import { realReadingSchema } from "@/lib/zod/reading-schema";
 import { NextResponse } from "next/server";
 
-export async function GET() {
-    const { session } = await verifySession()
-    console.log(session)
-    if (!session) {
+export async function GET(req: Request) {
+    const token = req.headers.get('Authorization')?.replace('Bearer ', '');
+    if (!token) {
+        return NextResponse.json(null, { status: 401 });
+    }
+    const user = await prisma.user.findFirst({
+        where: { accessToken: token },
+    })
+    if (!user) {
         return NextResponse.json(null, { status: 401 });
     }
     const readings = await prisma.reading.findMany({
-        where: { userId: session.user.id },
+        where: { userId: user.id },
         orderBy: { createdAt: 'desc' },
     })
     return NextResponse.json(readings);
