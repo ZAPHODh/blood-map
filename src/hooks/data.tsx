@@ -1,7 +1,8 @@
 "use client"
 
+import { DashboardSkeleton } from "@/components/dashboard-skeleton"
 import { Reading } from "@/generated/prisma"
-import { createContext, useContext, useState, type ReactNode } from "react"
+import { createContext, useContext, useEffect, useState, type ReactNode } from "react"
 
 
 
@@ -19,7 +20,18 @@ const DataContext = createContext<DataContextType | undefined>(undefined)
 
 export function DataProvider({ children, initialReadings }: { children: ReactNode, initialReadings: Reading[] }) {
     const [readings, setReadings] = useState<Reading[]>(initialReadings)
+    const [isLoading, setIsLoading] = useState(true)
 
+    useEffect(() => {
+        if (initialReadings) {
+            setReadings(initialReadings)
+            setIsLoading(false)
+        }
+    }, [initialReadings])
+
+    if (isLoading) {
+        return <DashboardSkeleton />
+    }
     const addReading = async (newReading: Omit<Reading, "id" | "userId" | "createdAt" | "updatedAt">) => {
         const res = await fetch("/api/readings", {
             method: "POST",
